@@ -42,7 +42,7 @@ Many agent frameworks (nanobot's Dream, OpenClaw's auto-memory, etc.) focus on *
 **Decision**: Infer project operations from conversation context rather than requiring exact trigger phrases.
 
 **Rationale**:
-- Users naturally say "back to that CMRA thing" not "resume project cmra-geo"
+- Users naturally say "back to that auth thing" not "resume project auth-module"
 - Fuzzy matching + index lookup handles imprecise references
 - When ambiguous, show recent projects for selection instead of guessing
 
@@ -113,7 +113,7 @@ This architecture has been validated across three different agent frameworks:
 | Platform | Instances | Channels | Status |
 |----------|-----------|----------|--------|
 | **nanobot** | 1 | Feishu, WeChat, CLI | ✅ Production |
-| **OpenClaw** | 2 (虾总 + 虾软) | Feishu | ✅ Production |
+| **OpenClaw** | 2 (`{instance-A}` + `{instance-B}`) | Feishu | ✅ Production |
 | **Hermes Agent** | 1 | Custom | ✅ Production |
 
 All three platforms share the same core principles:
