@@ -21,7 +21,7 @@ Many agent frameworks (nanobot's Dream, OpenClaw's auto-memory, etc.) focus on *
 | **Trigger** | Automatic, periodic | Explicit, intent-driven |
 | **Content** | User preferences, lessons learned | Project progress, todos, decisions |
 | **Recovery** | Semantic search across all memory | Direct file read by project name |
-| **Concurrency** | Single writer, potential conflicts | Read-merge-write per project |
+| **Concurrency** | Single writer, potential conflicts | Per-project isolation (reduces cross-project conflicts; same-project writes use read-merge-write to reduce accidental overwrites) |
 
 **They are complementary, not competing.** Project progress goes in `STATUS.md`; user preferences go in global memory. The two never overlap.
 
@@ -62,7 +62,8 @@ Many agent frameworks (nanobot's Dream, OpenClaw's auto-memory, etc.) focus on *
 **Rationale**:
 - Multiple agent instances may operate on the same project
 - Blind overwrite from stale cache causes data loss
-- Read-merge-write is the simplest concurrent-safe pattern without locks
+- Read-merge-write reduces accidental overwrites within a single session
+- **Limitation**: This is not truly atomic — if two sessions read the same base simultaneously, the later write can still clobber the earlier one. For true multi-session atomic safety, a lock file, CAS (compare-and-swap), or append-only log would be needed. In practice, agent sessions rarely write to the same project at the exact same second, so read-merge-write provides sufficient protection for the common case.
 
 ### 5. Index Self-Healing
 
@@ -103,7 +104,7 @@ workspace/
 | Project recovery time | User re-describes context (~2 min) | Read `STATUS.md` (<1 sec) |
 | Context pollution risk | High (all projects mixed) | Low (physical isolation) |
 | Small task overhead | Full 5-module template | Lightweight 2-3 modules |
-| Concurrent session safety | Single writer bottleneck | Per-project isolation |
+| Write safety | Blind overwrite from stale cache | Read-merge-write reduces accidental overwrites |
 
 ## Cross-Platform Validation
 
@@ -118,7 +119,7 @@ This architecture has been validated across three different agent frameworks:
 All three platforms share the same core principles:
 - Per-project `STATUS.md` isolation
 - Intent-driven workflow (no rigid keywords)
-- Read-merge-write concurrent safety
+- Write-safe read-merge-write pattern (reduces accidental overwrites)
 - Strict memory boundary rules
 
 ## Future Extensions
@@ -130,4 +131,4 @@ All three platforms share the same core principles:
 
 ---
 
-*v2.1 — Battle-tested across concurrent agent instances with auto-healing index, concurrent-safe writes, and fuzzy-match fallback.*
+*v2.2 — Templates moved to references/, concurrent-safety claims softened with TOCTOU limitation noted, git commands scoped to project directory, worktree detection via git-native probe.*

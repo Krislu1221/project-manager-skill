@@ -34,7 +34,7 @@ workspace/projects/
 | **Physical Isolation** | Each project has its own `STATUS.md` — no shared state |
 | **Intent Recognition** | No rigid keywords — infers new/resume/pause/switch from context |
 | **Tiered Templates** | Full (A) for multi-phase projects, Lightweight (B) for single tasks |
-| **Concurrent-Safe** | Read-merge-write pattern prevents multi-session overwrites |
+| **Write-Safe** | Read-merge-write pattern reduces accidental overwrites within a session |
 | **Index Self-Healing** | Auto-creates `index.md`, auto-adds missing projects |
 | **Memory Boundary** | Project progress in `STATUS.md`, user preferences in global memory — never mixed |
 
@@ -76,4 +76,4 @@ MIT
 
 ---
 
-*Designed by Kris. Battle-tested across concurrent agent instances (Feishu, WeChat, CLI) with multi-platform support.*
+*Designed by Kris. v2.2 — Templates extracted to references/, concurrent-safety claims softened, git commands scoped to project directory.*
