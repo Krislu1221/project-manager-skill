@@ -42,7 +42,7 @@ Many agent frameworks (nanobot's Dream, OpenClaw's auto-memory, etc.) focus on *
 **Decision**: Infer project operations from conversation context rather than requiring exact trigger phrases.
 
 **Rationale**:
-- Users naturally say "back to that auth thing" not "resume project auth-module"
+- Users naturally say "back to that project" not "resume project {project-name}"
 - Fuzzy matching + index lookup handles imprecise references
 - When ambiguous, show recent projects for selection instead of guessing
 
