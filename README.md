@@ -2,7 +2,21 @@
 
 **Cross-Platform Project Context Isolation & State Management for AI Agents**
 
+> 🌐 [English](README.md) | [中文](README_CN.md)
+
 > Battle-tested across **nanobot**, **OpenClaw**, and **Hermes Agent** — solving the fundamental tension between AI agents' stateless nature and projects' need for continuity.
+
+## 简介 (Introduction)
+
+AI Agent 是无状态的，但项目需要连续性。本 Skill 通过为每个项目创建独立的 `STATUS.md` 文件，实现跨会话的无缝上下文恢复，同时不污染全局记忆。
+
+- **物理隔离**：每个项目独立文件，不共享状态
+- **意图识别**：无固定关键词，从上下文推断操作
+- **分级模板**：完整模板 (A) 用于复杂项目，轻量模板 (B) 用于单任务
+- **写入安全**：读-合并-写模式，减少意外覆盖
+- **量化效果**：全局记忆从 1153 行降至 167 行（减少 85%）
+
+👉 详细中文设计文档：[DESIGN_CN.md](DESIGN_CN.md)
 
 ## Problem
 
