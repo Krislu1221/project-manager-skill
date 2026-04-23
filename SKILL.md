@@ -4,7 +4,7 @@ description: "Project context isolation and state management system. Creates per
 always: false
 ---
 
-# Project Manager v2.1
+# Project Manager v2.2
 
 ## Architecture: Memory vs File
 
@@ -56,8 +56,8 @@ workspace/projects/
 
 | Project | Directory | Last Updated | Status | Notes |
 |---------|-----------|-------------|--------|-------|
-| english-reader | english-reader/ | 2026-04-20 | Active | English learning tool |
-| auth-module | auth-module/ | 2026-04-18 | Paused | Awaiting requirements |
+| {project-a} | {project-a}/ | 2026-04-20 | Active | Example project A |
+| {project-b} | {project-b}/ | 2026-04-18 | Paused | Awaiting requirements |
 ```
 
 **Maintenance Rules:**
@@ -109,25 +109,25 @@ For full template content, see `references/templates.md`.
 
 ### 2. Initialize New Project
 
-**Input**: `new project auth module plan`
+**Input**: `new project {project-name} plan`
 
 **Actions:**
-1. Directory name in kebab-case: `auth-module`
-2. Create directory `workspace/projects/auth-module/`
+1. Directory name in kebab-case: `{project-name}`
+2. Create directory `workspace/projects/{project-name}/`
 3. Choose A/B template based on complexity, create `STATUS.md`
 4. **Ensure `index.md` exists**: Auto-create with header if missing
 5. Update `projects/index.md` (add to top)
-6. Check for git repo (`git -C workspace/projects/auth-module rev-parse --is-inside-work-tree`), record initial commit hash if present
-7. **Reply**: "✅ Created project `auth-module`. Tell me the project goal and first step."
+6. Check for git repo (`git -C workspace/projects/{project-name} rev-parse --is-inside-work-tree`), record initial commit hash if present
+7. **Reply**: "✅ Created project `{project-name}`. Tell me the project goal and first step."
 
 ### 3. Resume Existing Project
 
-**Input**: `back to auth module project` or implicit resume
+**Input**: `back to {project-name} project` or implicit resume
 
 **Actions:**
 1. **Fuzzy match**: User's project name may be imprecise — find closest match in index.md
 2. **Force read**: `read(workspace/projects/{name}/STATUS.md)`
-3. **Sync summary**: "📖 Restored `auth-module` context. Current: [brief progress]. Todo: [list]. Where to continue?"
+3. **Sync summary**: "📖 Restored `{project-name}` context. Current: [brief progress]. Todo: [list]. Where to continue?"
 4. **Update index.md**: Move project to top by last active time
 5. **No assumptions**: If file missing or no match, ask user to confirm
 
@@ -181,8 +181,8 @@ For full template content, see `references/templates.md`.
 |-----------------|----------|---------|
 | User preferences | `MEMORY.md` | "Prefers concise answers" |
 | Cross-project lessons | `MEMORY.md` | "X approach caused Y pitfall last time" |
-| Daily work log | `memory/YYYY-MM-DD.md` | "Advanced auth module today, see STATUS.md for details" |
-| Project progress | `projects/{name}/STATUS.md` | "Auth module: login done, starting permissions" |
+| Daily work log | `memory/YYYY-MM-DD.md` | "Advanced {project-name} today, see STATUS.md for details" |
+| Project progress | `projects/{name}/STATUS.md` | "{project-name}: phase 1 done, starting phase 2" |
 | Technical details | `projects/{name}/status/` | Test logs, design drafts |
 
 **Principle**: Read project progress from STATUS.md, distill lessons into MEMORY.md — the two never overlap. Daily logs contain **only a one-line summary + reference to STATUS.md**, no duplicated details.
