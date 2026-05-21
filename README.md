@@ -73,7 +73,7 @@ workspace/projects/
 Copy `SKILL.md` to `~/.nanobot/workspace/skills/project-manager/SKILL.md`
 
 ### OpenClaw
-Copy `SKILL.md` to ``~/.openclaw/skills/project-manager/SKILL.md`
+Copy `SKILL.md` to `<workspace>/skills/project-manager/SKILL.md`
 
 ### Hermes Agent
 Copy `SKILL.md` to your agent's skills directory

@@ -74,7 +74,7 @@ workspace/projects/
 将 `SKILL.md` 复制到 `~/.nanobot/workspace/skills/project-manager/SKILL.md`
 
 ### OpenClaw
-将 `SKILL.md` 复制到 ``~/.openclaw/skills/project-manager/SKILL.md`
+将 `SKILL.md` 复制到 `<workspace>/skills/project-manager/SKILL.md`
 
 ### Hermes Agent
 将 `SKILL.md` 复制到 Agent 的 skills 目录
