@@ -122,13 +122,79 @@ All three platforms share the same core principles:
 - Write-safe read-merge-write pattern (reduces accidental overwrites)
 - Strict memory boundary rules
 
+## Version History
+
+### v2.5 Architecture Additions (2026-05-17)
+
+#### Gantt Chart Auto-Generation
+- ASCII progress bar rendering (█ = done, ░ = pending), fixed 20-character width
+- Milestone tracking with 3 states: pending / in-progress / completed
+- Delay warning system (🔴 delayed / 🟡 at-risk)
+- Resource conflict detection (≥3 milestones on same day triggers warning)
+- Output: `projects/{name}/GANTT.md` + global summary in `index.md`
+
+#### 8-Rule Risk Detection Engine
+- Silent risk: >14 days without updates
+- No milestones risk: project started >7 days without any milestones
+- Already delayed: past estimated_end & not 100% complete
+- Dependency cycle: A depends on B & B depends on A (DAG loop detection)
+- Delay risk: <3 days to deadline & progress <70%
+- Single point dependency: ≥3 projects depend on same skill
+- Estimation bias: last 2 completed projects had >50% estimation error
+- Scope creep: milestones increased >50% from original count, then more added
+
+#### Dependency Management System
+- 3 types: requires / blocks / optional
+- 3 statuses: satisfied / blocked / in-progress
+- Machine-parsable YAML format embedded in STATUS.md
+
+#### Conversation Log Archiving
+- Output: `memory/project_log_{name}.md`
+- Contents: decision timeline + lessons learned + session snapshots
+- Searchable by project name and keywords
+
+#### Effort Tracking Fields
+- `estimated_hours`: set at project start
+- `actual_hours`: **MUST fill at project completion**
+- Used by risk engine "estimation bias" rule
+
+---
+
+### v2.4 Architecture Additions (2026-04-25)
+
+#### In-Session Periodic State Synchronization
+- Checkpoint file: `memory/pm-checkpoint.json`
+- Incremental read: only messages since last check
+- 6 exhaustive trigger categories: explicit commands / implicit references / importance markers / topic switches / completion signals / pause signals
+- Token consumption control: incremental scans only
+
+#### Index Self-Healing
+- Auto-creates `index.md` header if missing
+- Auto-populates projects present in directory but not in index
+- Every project requires a one-line summary
+
+#### Template Downgrade Mechanism
+- Template A (full): >3 days / multi-phase / team collaboration
+- Template B (lightweight): <3 days single tasks / research
+- Auto-selected based on complexity to prevent over-engineering
+
+---
+
+### v2.2 (Historical)
+- Templates moved to `templates/` directory
+- "Concurrent safety" → "Write safety", TOCTOU limitation explicitly noted
+- Git commands scoped to project directory
+- Worktree detection via git-native probe
+
+---
+
 ## Future Extensions
 
 1. **Git Integration**: Auto-record commit hashes in `STATUS.md` header for code-state correlation
-2. **Auto-Archive**: Heartbeat task to detect inactive projects (>30 days) and prompt archival
+2. **Auto-Archive**: Periodic check task to detect inactive projects (>30 days) and prompt archival
 3. **Cross-Project Dependencies**: Track when Project A blocks Project B
 4. **Template Marketplace**: Community-contributed STATUS.md templates for specific domains (research, devops, design)
 
 ---
 
-*v2.2 — Templates moved to references/, concurrent-safety claims softened with TOCTOU limitation noted, git commands scoped to project directory, worktree detection via git-native probe.*
+*Full changelog: see CHANGELOG.md*

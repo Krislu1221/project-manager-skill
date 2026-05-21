@@ -1,11 +1,24 @@
-# Project: [Name]
-> Last Updated: [Date]
+# 项目：[名称]
+> 最后更新：[日期] | PM: v2.5
 
-## 📍 Current Status
-[One-sentence progress summary]
+## 📅 时间线
+```yaml
+start_date: [YYYY-MM-DD]
+estimated_end: [YYYY-MM-DD]
+estimated_hours: [预计工时，如 4]
+actual_hours: null  # 完成后填写
+# 自动计算进度
+# progress: 0%
+```
 
-## 🔑 Decisions (optional)
-[Record why if an important choice was made. Omit if none.]
+## 📍 当前状态
+[一句话描述当前进度]
 
-## 📋 Next Step
-- [ ] What to do next
+## 🔑 决策（可选）
+[如果做了重要选择，记录原因。没有就删掉。]
+
+## 📋 下一步
+- [ ] 接下来要做什么
+
+## ⚠️ 风险（自动扫描）
+<!-- Project Manager v2.5 自动填充 -->
