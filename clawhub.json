@@ -1,0 +1,41 @@
+{
+  "name": "agent-project-manager",
+  "version": "2.5.0",
+  "description": "项目上下文隔离与状态管理系统 v2.5 — 甘特图自动生成 + 8规则风险检测引擎 + 依赖关系管理 + 对话日志归档",
+  "author": "Kris Lu <krislu666@foxmail.com>",
+  "license": "MIT",
+  "triggers": [
+    "新建项目", "帮我建一个", "开始做", "记录一下",
+    "回到", "继续", "上次那个", "先停一下",
+    "保存状态", "项目列表", "换个话题", "搞定了",
+    "这个很重要", "别忘了", "记一下",
+    "甘特图", "时间线", "进度图", "风险扫描", "检查风险"
+  ],
+  "keywords": [
+    "project-management",
+    "context-isolation",
+    "state-management",
+    "gantt-chart",
+    "risk-detection",
+    "dependency-management",
+    "checkpoint"
+  ],
+  "main": "SKILL.md",
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "README_CN.md",
+    "CHANGELOG.md",
+    "DESIGN.md",
+    "DESIGN_CN.md",
+    "templates/",
+    "references/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Krislu1221/project-manager-skill"
+  },
+  "bugs": {
+    "url": "https://github.com/Krislu1221/project-manager-skill/issues"
+  }
+}
