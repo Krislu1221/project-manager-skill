@@ -1,6 +1,6 @@
 {
   "name": "agent-project-manager",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "项目上下文隔离与状态管理系统 v2.5 — 甘特图自动生成 + 8规则风险检测引擎 + 依赖关系管理 + 对话日志归档",
   "author": "Kris Lu <krislu666@foxmail.com>",
   "license": "MIT",
@@ -8,11 +8,13 @@
     "/project",
     "新建项目",
     "项目列表",
+    "记录一下",
+    "回到项目",
+    "继续项目",
+    "上次那个",
     "甘特图",
     "时间线",
-    "进度图",
-    "风险扫描",
-    "检查风险"
+    "进度图"
   ],
   "keywords": [
     "project-management",
