@@ -1,7 +1,7 @@
 {
   "name": "agent-project-manager",
-  "version": "2.5.4",
-  "description": "项目上下文隔离与状态管理系统 v2.5 — 甘特图自动生成 + 8规则风险检测引擎 + 依赖关系管理 + 对话日志归档",
+  "version": "2.6.0",
+  "description": "项目上下文隔离与状态管理系统 v2.5。按需记录项目进度、决策和待办，支持甘特图、风险扫描和依赖管理。仅在用户明确指示时执行操作，不会主动扫描或修改文件。",
   "author": "Kris Lu",
   "license": "MIT",
   "triggers": [
